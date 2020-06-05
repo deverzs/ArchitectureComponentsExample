@@ -13,14 +13,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    NoteViewModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        NoteViewModel model = new NoteViewModel(this.getApplication());
+        model = new NoteViewModel(this.getApplication());
         model.getAllNotes().observe(this, new Observer<List<Note>>() {
             @Override
             public void onChanged(List<Note> notes) {
