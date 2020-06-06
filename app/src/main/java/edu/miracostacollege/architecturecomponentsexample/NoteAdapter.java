@@ -15,6 +15,9 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
 
     private List<Note> notes = new ArrayList<>();
 
+    //for interface reference
+    private OnItemClickListener listener;
+
     @NonNull
     @Override
     public NoteHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -58,7 +61,30 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
             textViewDescritption = itemView.findViewById(R.id.text_view_descr);
             textViewPriority = itemView.findViewById(R.id.text_view_priority);
 
+            //setting onClick listener on the card view
+            //implemented in Main activity
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    //check if listener is not nul and there is a position that is valid
+                    if(listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(notes.get(position));
+                    }
+                }
+            });
         }
 
+    }
+
+    //Interface, implemented in Main to update
+    public interface OnItemClickListener {
+        void onItemClick(Note note);
+    }
+
+    //reference to the above
+    //listener is passed from the member variable
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
     }
 }
