@@ -64,14 +64,16 @@ public class MainActivity extends AppCompatActivity {
                 // //every time the list changes and pass
                 //the notes we created and update the view
                 adapter.setNotes(notes);
-                Toast.makeText(MainActivity.this, "It works??", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "List changed", Toast.LENGTH_SHORT).show();
             }
         });
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            public boolean onMove(@NonNull RecyclerView recyclerView,
+                                  @NonNull RecyclerView.ViewHolder viewHolder,
+                                  @NonNull RecyclerView.ViewHolder target) {
                 return false;
             }
 
@@ -115,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             int id = data.getIntExtra(AddEditNoteActivity.EXTRA_ID, -1);
             if(id == -1) {
                 //something went wrong
-                Toast.makeText(this, "Note an't be updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Note can't be updated", Toast.LENGTH_SHORT).show();
                 return;
             }
             String title = data.getStringExtra(AddEditNoteActivity.EXTRA_TITLE);
