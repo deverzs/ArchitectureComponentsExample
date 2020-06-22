@@ -21,7 +21,7 @@ public abstract class NoteDatabase extends RoomDatabase {
         if(instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     NoteDatabase.class, "note_database")
-                    .fallbackToDestructiveMigration()
+                    .fallbackToDestructiveMigration()  //when version updates, the old DB is deleted first
                     .addCallback(callback)
                     .build();
         }

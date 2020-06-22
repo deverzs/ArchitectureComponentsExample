@@ -59,7 +59,7 @@ public class NoteRepository {
 
         @Override
         protected Void doInBackground(Note... notes) {
-            noteDao.insert(notes[0]); //this is the first notes in the array passed in
+            noteDao.insert(notes[0]); //this is the first notes in the varargs passed in
             //in this case, there is only 1, but it is still the first one
             return null;
         }
@@ -77,7 +77,7 @@ public class NoteRepository {
 
         @Override
         protected Void doInBackground(Note... notes) {
-            noteDao.delete(notes[0]); //this is the first notes in the array passed in
+            noteDao.delete(notes[0]); //this is the first notes in the varargs passed in
             //in this case, there is only 1, but it is still the first one
             return null;
         }
@@ -96,7 +96,7 @@ public class NoteRepository {
 
         @Override
         protected Void doInBackground(Note... notes) {
-            noteDao.update(notes[0]); //this is the first notes in the array passed in
+            noteDao.update(notes[0]); //this is the first notes in the varargs passed in
             //in this case, there is only 1, but it is still the first one
             return null;
         }
